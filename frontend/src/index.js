@@ -7,10 +7,10 @@ import './index.css';
 
 //Pages
 import App from './App';
-import ErrorPage from './ErrorPage';
-import Recipes from './Recipes';
-import Tracker from './Tracker';
-import Home from './Home';
+import ErrorPage from './pages/ErrorPage';
+import Recipes from './pages/Recipes';
+import Tracker from './pages/Tracker';
+import Home from './pages/Home';
 
 //Routing
 import { createBrowserRouter } from "react-router-dom";
