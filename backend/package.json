@@ -2,7 +2,7 @@
   "name": "food-tracker",
   "version": "1.0.0",
   "description": "Web app to track food and macros",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
