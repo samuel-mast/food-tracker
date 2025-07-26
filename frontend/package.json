@@ -18,9 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "tailwind:build": "node --experimental-specifier-resolution=node ./node_modules/tailwindcss/dist/cli.mjs -i ./src/input.css -o ./src/output.css --minify",
-    "tailwind:watch": "node --experimental-specifier-resolution=node ./node_modules/tailwindcss/dist/cli.mjs -i ./src/input.css -o ./src/output.css --watch"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
