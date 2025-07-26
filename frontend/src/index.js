@@ -1,3 +1,4 @@
+//React
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -9,11 +10,11 @@ import App from './App';
 import ErrorPage from './ErrorPage';
 import Recipes from './Recipes';
 import Tracker from './Tracker';
+import Home from './Home';
 
 //Routing
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import Home from './Home';
 
 const router = createBrowserRouter([
   { path: "/", 
