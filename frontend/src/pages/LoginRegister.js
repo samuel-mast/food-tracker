@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-function validateCredentials(credentials) {
+function validateRegistrationCredentials(credentials) {
     const errors = [];
     const username = credentials.username || '';
     const password = credentials.password || '';
+
+    if (!username || !password) {
+        errors.push("Username and password are required.");
+        return errors;
+    }
 
     if (username.length < 3) {
         errors.push("Username must be at least 3 characters long.");
@@ -27,6 +32,9 @@ function validateCredentials(credentials) {
 }
 
 async function loginUser(credentials) {
+    if (!credentials.username || !credentials.password) {
+        return { error: "Username and password are required." };
+    }
     return fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
@@ -37,7 +45,7 @@ async function loginUser(credentials) {
 }
 
 async function registerUser(credentials) {
-    const errors = validateCredentials(credentials);
+    const errors = validateRegistrationCredentials(credentials);
     if (errors.length > 0) {
         return { error: errors.join(" ") };
     }
