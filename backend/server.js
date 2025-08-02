@@ -37,6 +37,10 @@ module.exports = User;
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
   try {
+    const duplicateUsername = await User.findOne({ username });
+    if (duplicateUsername) {
+      return res.status(400).json({ error: 'Username already exists' });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, password: hashedPassword });
     await newUser.save();
