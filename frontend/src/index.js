@@ -9,8 +9,7 @@ import './index.css';
 import App from './App';
 import ErrorPage from './pages/ErrorPage';
 import Recipes from './pages/Recipes';
-import Tracker from './pages/Tracker';
-import Home from './pages/Home';
+import MealTracker from './pages/MealTracker';
 
 //Routing
 import { createBrowserRouter } from "react-router-dom";
@@ -21,9 +20,8 @@ const router = createBrowserRouter([
     element: <App />, 
     errorElement: <ErrorPage />, 
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <MealTracker /> },
       { path: "/recipes", element: <Recipes /> },
-      { path: "/tracker", element: <Tracker /> },
     ] },
 ]);
 

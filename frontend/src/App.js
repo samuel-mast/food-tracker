@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <header>
+      <header className='sticky top-0 z-50'>
         <NavBar setToken={setToken} />
       </header>
       <main>
