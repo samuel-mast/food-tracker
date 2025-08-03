@@ -15,7 +15,7 @@ async function getMeals() {
 }
 
 const MealTracker = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [meals, setMeals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingMeal, setEditingMeal] = useState(null);
@@ -129,7 +129,9 @@ const MealTracker = () => {
 
   return (
     loading ? (
-      <div></div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500"></div>
+      </div>
     ) : (
       <div className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
         {/* Daily Summary Header */}

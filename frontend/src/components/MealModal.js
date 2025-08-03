@@ -117,18 +117,11 @@ const MealModal = ({ isOpen, onClose, onSave, editMeal = null, defaultMealType =
     }
   };
 
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
     <div 
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
-      onClick={handleBackdropClick}
     >
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
         {/* Header */}
