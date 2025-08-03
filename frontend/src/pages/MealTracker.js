@@ -15,6 +15,7 @@ async function getMeals() {
 }
 
 const MealTracker = () => {
+  const [loading, setLoading] = useState(false);
   const [meals, setMeals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingMeal, setEditingMeal] = useState(null);
@@ -22,8 +23,15 @@ const MealTracker = () => {
 
   useEffect(() => {
     const fetchMeals = async () => {
-      const mealsData = await getMeals();
-      setMeals(mealsData);
+      setLoading(true);
+      try {
+        const mealsData = await getMeals();
+        setMeals(mealsData);
+      } catch (error) {
+        console.error('Error fetching meals:', error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchMeals();
   }, []);
@@ -79,6 +87,7 @@ const MealTracker = () => {
   };
 
   const handleSaveMeal = async (mealData, mealId) => {
+    setLoading(true);
     try {
       const tokenString = localStorage.getItem('token');
       const tokenObject = JSON.parse(tokenString);
@@ -113,15 +122,20 @@ const MealTracker = () => {
     } catch (error) {
       console.error('Error saving meal:', error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
-      {/* Daily Summary Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6 mb-8 shadow-lg">
-        <h1 className="text-3xl font-bold mb-4">Today's Nutrition</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    loading ? (
+      <div></div>
+    ) : (
+      <div className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
+        {/* Daily Summary Header */}
+        <div className="bg-gray-800 text-white rounded-xl p-6 mb-8 shadow-lg">
+          <h1 className="text-3xl font-bold mb-4">Today's Nutrition</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center bg-white/10 rounded-lg p-4 backdrop-blur-sm">
             <div className="text-2xl md:text-3xl font-bold">{dailyTotals.calories}</div>
             <div className="text-blue-100 text-sm">Calories</div>
@@ -249,6 +263,7 @@ const MealTracker = () => {
         defaultMealType={defaultMealType}
       />
     </div>
+    )
   );
 };
 
